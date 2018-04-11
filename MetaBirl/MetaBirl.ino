@@ -65,22 +65,34 @@ void irTras(){
   parar();
 }
 void irEsquerdaFrente(){ //G - 71
-  digitalWrite(R4T, HIGH);
+  digitalWrite(R1F, HIGH);
+  digitalWrite(R2F, HIGH);
+  digitalWrite(R3T, HIGH);
+  digitalWrite(R4F, HIGH);
   delay(25);
   parar();
 }
 void irDireitaFrente(){ //I - 73
-  digitalWrite(R3T, HIGH);
-  delay(25);
-  parar();
-}
-void irEsquerdaTras(){ //H - 72
+  digitalWrite(R1F, HIGH);
+  digitalWrite(R2F, HIGH);
+  digitalWrite(R3F, HIGH);
   digitalWrite(R4T, HIGH);
   delay(25);
   parar();
 }
-void irDireitaTras(){ //J - 74
+void irEsquerdaTras(){ //H - 72
+  digitalWrite(R1T, HIGH);
+  digitalWrite(R2T, HIGH);
   digitalWrite(R3T, HIGH);
+  digitalWrite(R4F, HIGH);
+  delay(25);
+  parar();
+}
+void irDireitaTras(){ //J - 74
+  digitalWrite(R1T, HIGH);
+  digitalWrite(R2T, HIGH);
+  digitalWrite(R3F, HIGH);
+  digitalWrite(R4T, HIGH);
   delay(25);
   parar();
 }
