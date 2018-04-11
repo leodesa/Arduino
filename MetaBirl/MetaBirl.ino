@@ -1,14 +1,15 @@
 #include <HC05.h>
 
-#define R1F 2
-#define R1T 3
+#define R1F 3
+#define R1T 2
 #define R2F 4
 #define R2T 5
-#define R3F 6
-#define R3T 7
-#define R4F 8
-#define R4T 9
+#define R3F 8
+#define R3T 9
+#define R4F 6
+#define R4T 7
 #define LED 10
+#define H5 13
 
 // Posição das Rodas no carro:
 //  #####
@@ -32,7 +33,9 @@ void setup() {
   pinMode(R3T, OUTPUT);
   pinMode(R4F, OUTPUT);
   pinMode(R4T, OUTPUT);
+  pinMode(H5, OUTPUT);
   
+  digitalWrite(LED, LOW);
   digitalWrite(R1F, LOW);
   digitalWrite(R1T, LOW);
   digitalWrite(R2F, LOW);
@@ -41,6 +44,7 @@ void setup() {
   digitalWrite(R3T, LOW);
   digitalWrite(R4F, LOW);
   digitalWrite(R4T, LOW);
+  digitalWrite(H5, HIGH);
 
   Serial.begin(38400);
 }
@@ -61,34 +65,22 @@ void irTras(){
   parar();
 }
 void irEsquerdaFrente(){ //G - 71
-  digitalWrite(R1T, HIGH);
-  digitalWrite(R2F, HIGH);
-  digitalWrite(R3F, HIGH);
-  digitalWrite(R4F, HIGH);
+  digitalWrite(R4T, HIGH);
   delay(25);
   parar();
 }
 void irDireitaFrente(){ //I - 73
-  digitalWrite(R2T, HIGH);
-  digitalWrite(R1F, HIGH);
-  digitalWrite(R3F, HIGH);
-  digitalWrite(R4F, HIGH);
+  digitalWrite(R3T, HIGH);
   delay(25);
   parar();
 }
 void irEsquerdaTras(){ //H - 72
-  digitalWrite(R1F, HIGH);
-  digitalWrite(R2T, HIGH);
-  digitalWrite(R3T, HIGH);
   digitalWrite(R4T, HIGH);
   delay(25);
   parar();
 }
 void irDireitaTras(){ //J - 74
-  digitalWrite(R2F, HIGH);
-  digitalWrite(R1T, HIGH);
   digitalWrite(R3T, HIGH);
-  digitalWrite(R4T, HIGH);
   delay(25);
   parar();
 }
