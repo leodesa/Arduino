@@ -22,6 +22,8 @@
 
 int comando;
 int led;
+int tempo = 25; //MS
+
 
 void setup() {
   pinMode(LED, OUTPUT);
@@ -53,7 +55,7 @@ void irFrente(){
   digitalWrite(R2F, HIGH);
   digitalWrite(R3F, HIGH);
   digitalWrite(R4F, HIGH);
-  delay(25);
+  delay(tempo);
   parar();
 }
 void irTras(){
@@ -61,39 +63,35 @@ void irTras(){
   digitalWrite(R2T, HIGH);
   digitalWrite(R3T, HIGH);
   digitalWrite(R4T, HIGH);
-  delay(25);
+  delay(tempo);
   parar();
 }
 void irEsquerdaFrente(){ //G - 71
-  digitalWrite(R1F, HIGH);
   digitalWrite(R2F, HIGH);
   digitalWrite(R3T, HIGH);
   digitalWrite(R4F, HIGH);
-  delay(25);
+  delay(tempo);
   parar();
 }
 void irDireitaFrente(){ //I - 73
   digitalWrite(R1F, HIGH);
-  digitalWrite(R2F, HIGH);
   digitalWrite(R3F, HIGH);
   digitalWrite(R4T, HIGH);
-  delay(25);
+  delay(tempo);
   parar();
 }
 void irEsquerdaTras(){ //H - 72
-  digitalWrite(R1T, HIGH);
+  digitalWrite(R1F, HIGH);
   digitalWrite(R2T, HIGH);
-  digitalWrite(R3T, HIGH);
-  digitalWrite(R4F, HIGH);
-  delay(25);
+  digitalWrite(R4T, HIGH);
+  delay(tempo);
   parar();
 }
 void irDireitaTras(){ //J - 74
   digitalWrite(R1T, HIGH);
-  digitalWrite(R2T, HIGH);
-  digitalWrite(R3F, HIGH);
-  digitalWrite(R4T, HIGH);
-  delay(25);
+  digitalWrite(R2F, HIGH);
+  digitalWrite(R3T, HIGH);
+  delay(tempo);
   parar();
 }
 void irEsquerda(){
@@ -101,7 +99,7 @@ void irEsquerda(){
   digitalWrite(R2F, HIGH);
   digitalWrite(R3T, HIGH);
   digitalWrite(R4F, HIGH);
-  delay(25);
+  delay(tempo);
   parar();
 }
 void irDireita(){
@@ -109,7 +107,7 @@ void irDireita(){
   digitalWrite(R2T, HIGH);
   digitalWrite(R3F, HIGH);
   digitalWrite(R4T, HIGH);
-  delay(25);
+  delay(tempo);
   parar();
 }
 void parar(){
