@@ -1,13 +1,13 @@
 #include <HC05.h>
 
-#define R1F 3
-#define R1T 2
-#define R2F 4
-#define R2T 5
-#define R3F 8
-#define R3T 9
-#define R4F 6
-#define R4T 7
+#define R1F 7
+#define R1T 6
+#define R2F 9
+#define R2T 8
+#define R3F 5
+#define R3T 4
+#define R4F 2
+#define R4T 3
 #define LED 10
 #define H5 13
 
