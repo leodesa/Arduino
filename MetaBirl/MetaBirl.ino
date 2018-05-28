@@ -1,3 +1,4 @@
+#include <NewPing.h>
 #include <HC05.h>
 
 #define R1F 7
@@ -11,6 +12,18 @@
 #define LED 10
 #define H5 13
 
+#define sensorFrente A4
+#define sensorTras A5
+
+#define TRIGGER_ESQUERDO  A0
+#define ECHO_ESQUERDO     A1
+#define MAX_ESQUERDO 200
+#define TRIGGER_DIREITO  A2
+#define ECHO_DIREITO     A3
+#define MAX_DIREITO 200
+
+NewPing sonarEsquerdo(TRIGGER_ESQUERDO, ECHO_ESQUERDO, MAX_ESQUERDO);
+NewPing sonarDireito(TRIGGER_DIREITO, ECHO_DIREITO, MAX_DIREITO);
 // Posição das Rodas no carro:
 //  #####
 //  1###2
@@ -130,35 +143,51 @@ void apagar(){
 void loop() {
   if(Serial.available() >0 ){
     comando = Serial.read();
-    if(comando == 70){
-      irFrente();
-    }else
-    if(comando == 82){
-      irDireita();
-    }else
-    if(comando == 76){
-      irEsquerda();
-    }else
-    if(comando == 66){
-      irTras();
-    }else 
-    if(comando == 73){
-      irDireitaFrente();
-    }else
-    if(comando == 71){
-      irEsquerdaFrente();
-    }else
-    if(comando == 74){
-      irDireitaTras();
-    }else
-    if(comando == 72){
-      irDireitaFrente();
-    }else
-    if(comando == 87){
-      acender();
-    }else 
-    if(comando == 119){
-      apagar();
+    if(comando == 87){// 87 = B, 119 = b
+      if(digitalRead(sensorTras) == 1){
+        irFrente();
+      }else
+      if(digitalRead(sensorFrente) == 1){
+        irTras();
+      }else
+      if(sonarEsquerdo.ping_cm() != 0 and sonarDireito.ping_cm() == 0){
+        irEsquerda();
+      }else
+      if(sonarDireito.ping_cm() != 0 and sonarEsquerdo.ping_cm() == 0){
+        irDireita();
+      }else
+      if(sonarEsquerdo.ping_cm() != 0 and sonarDireito.ping_cm() != 0){
+        irFrente();
+      }
+    }
+    else{
+      if(comando == 70){//F
+        irFrente();
+      }else
+      if(comando == 82){//B
+        irDireita();
+      }else
+      if(comando == 76){//L
+        irEsquerda();
+      }else
+      if(comando == 66){//R
+        irTras();
+      }else 
+      if(comando == 73){
+        irDireitaFrente();
+      }else
+      if(comando == 71){
+        irEsquerdaFrente();
+      }else
+      if(comando == 74){
+        irDireitaTras();
+      }else
+      if(comando == 72){
+        irDireitaFrente();
+      }else
+      if(true){
+        acender();
+      }
     }
    }
   }
