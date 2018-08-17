@@ -1,10 +1,10 @@
 #include <NewPing.h>
 #include <HC05.h>
 
-#define DT 4
-#define DF 5
-#define ET 6
-#define EF 7
+#define DT 5
+#define DF 4
+#define ET 7
+#define EF 6
 
 //INT1 - DIREITO TRÁS - DT
 //INT2 - DIREITO FRENTE - DF
