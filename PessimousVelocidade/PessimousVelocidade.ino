@@ -14,6 +14,7 @@
 int comando;
 int tempo = 25; //MS
 int ultrasom = 0;
+int velocidade =0;
 
 void setup() {
   pinMode(DF, OUTPUT);
@@ -29,46 +30,46 @@ void setup() {
   Serial.begin(38400);
 }
 void irFrente() {
-  digitalWrite(DF, HIGH);
-  digitalWrite(EF, HIGH);
+  analogWrite(DF, velocidade);
+  analogWrite(EF, velocidade);
   delay(25);
   parar();
 }
 void irTras() {
-  digitalWrite(DT, HIGH);
-  digitalWrite(ET, HIGH);
+  analogWrite(DT, velocidade);
+  analogWrite(ET, velocidade);
   delay(25);
   parar();
 }
 void irDireitaFrente() { //I - 73
-  digitalWrite(EF, HIGH);
+  analogWrite(EF, velocidade);
   delay(25);
   parar();
 }
 void irEsquerdaFrente() { //G - 71
-  digitalWrite(DF, HIGH);
+  analogWrite(DF, velocidade);
   delay(25);
   parar();
 }
 void irDireitaTras() { //J - 74
-  digitalWrite(DT, HIGH);
+  analogWrite(DT, velocidade);
   delay(25);
   parar();
 }
 void irEsquerdaTras() { //H - 72
-  digitalWrite(ET, HIGH);
+  analogWrite(ET, velocidade);
   delay(25);
   parar();
 }
 void irEsquerda() {
-  digitalWrite(ET, HIGH);
-  digitalWrite(DF, HIGH);
+  analogWrite(ET, velocidade);
+  analogWrite(DF, velocidade);
   delay(25);
   parar();
 }
 void irDireita() {
-  digitalWrite(EF, HIGH);
-  digitalWrite(DT, HIGH);
+  analogWrite(EF, velocidade);
+  analogWrite(DT, velocidade);
   delay(25);
   parar();
 }
@@ -82,6 +83,7 @@ void parar() {
 void loop() {
   if (Serial.available() > 0 ) {
     comando = Serial.read();
+    Serial.println(comando);
     if (comando == 70) {
       irFrente();
     } else if (comando == 82) {
@@ -98,6 +100,28 @@ void loop() {
       irDireitaTras();
     } else if (comando == 72) {
       irDireitaFrente();
+    } else if (comando == 48) {
+      velocidade = 0;
+    } else if (comando == 49) {
+      velocidade = 28;
+    } else if (comando == 50) {
+      velocidade = 56;
+    } else if (comando == 51) {
+      velocidade = 84;
+    } else if (comando == 52) {
+      velocidade = 112;
+    } else if (comando == 53) {
+      velocidade = 140;
+    } else if (comando == 54) {
+      velocidade = 168;
+    } else if (comando == 55) {
+      velocidade = 196;
+    } else if (comando == 56) {
+      velocidade = 224;
+    } else if (comando == 57) {
+      velocidade = 240;
+    } else if (comando == 113) {
+      velocidade = 255;
     }
   }
 }
