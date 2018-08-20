@@ -12,7 +12,7 @@
 //INT4 - ESQUERDO FRENTE - ET
 
 int comando;
-int tempo = 25; //MS
+int tempo = 26; //MS
 int ultrasom = 0;
 int velocidade =0;
 
